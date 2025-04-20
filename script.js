@@ -519,12 +519,12 @@ function exportSimpleList() {
         simpleList += `${debtor.name},${debtor.currentDebt}\n`;
     });
     
-    const dataBlob = new Blob([simpleList], { type: 'text/csv' });
+    const dataBlob = new Blob([simpleList], { type: 'text/plain' });
     const url = URL.createObjectURL(dataBlob);
     
     const link = document.createElement('a');
     link.href = url;
-    link.download = `deudas_simple_${formatDate(new Date())}.csv`;
+    link.download = `deudas_simple_${formatDate(new Date())}.txt`;
     link.click();
 }
 
