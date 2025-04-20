@@ -1,0 +1,386 @@
+:root {
+    --primary-color: #4caf50;
+    --primary-dark: #388e3c;
+    --accent-color: #ff6b6b;
+    --text-light: #f0f0f0;
+    --text-dark: #212121;
+    --bg-light: #ffffff;
+    --bg-dark: #121212;
+    --card-light: #f5f5f5;
+    --card-dark: #1e1e1e;
+    --border-light: #e0e0e0;
+    --border-dark: #333333;
+    --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-dark: 0 2px 5px rgba(0, 0, 0, 0.3);
+    --success: #4caf50;
+    --danger: #f44336;
+    --warning: #ff9800;
+    --info: #2196f3;
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    transition: var(--transition);
+}
+
+body.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.dark-mode header {
+    border-bottom: 1px solid var(--border-dark);
+}
+
+h1, h2, h3 {
+    margin-bottom: 16px;
+}
+
+.theme-toggle {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+section {
+    background-color: var(--card-light);
+    border-radius: var(--border-radius);
+    padding: 16px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-light);
+}
+
+.dark-mode section {
+    background-color: var(--card-dark);
+    box-shadow: var(--shadow-dark);
+}
+
+.input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+    .input-group {
+        flex-direction: column;
+    }
+}
+
+input, button, select {
+    padding: 10px 16px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-light);
+    font-size: 1rem;
+}
+
+.dark-mode input, .dark-mode button, .dark-mode select {
+    background-color: var(--card-dark);
+    color: var(--text-light);
+    border: 1px solid var(--border-dark);
+}
+
+input:focus, button:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+input[type="text"], input[type="number"] {
+    flex: 1;
+    min-width: 100px;
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+button:hover {
+    background-color: var(--primary-dark);
+}
+
+button.danger {
+    background-color: var(--danger);
+}
+
+button.warning {
+    background-color: var(--warning);
+}
+
+button.info {
+    background-color: var(--info);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.stats {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.debtors-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.debtor-card {
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-left: 4px solid var(--primary-color);
+    box-shadow: var(--shadow-light);
+}
+
+.dark-mode .debtor-card {
+    background-color: var(--bg-dark);
+    box-shadow: var(--shadow-dark);
+}
+
+.debtor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.debtor-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.debtor-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.debtor-detail {
+    font-size: 0.9rem;
+}
+
+.penalized {
+    color: var(--danger);
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
+.buttons-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.import-container {
+    position: relative;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.dark-mode .modal-content {
+    background-color: var(--card-dark);
+    color: var(--text-light);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+.dark-mode .close-modal {
+    color: var(--text-light);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.history-content {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.history-item {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+}
+
+.dark-mode .history-item {
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.penalty-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: var(--transition);
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: var(--transition);
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+.config-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+@media (max-width: 600px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .stats {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .actions {
+        margin-top: 8px;
+    }
+    
+    .modal-content {
+        width: 95%;
+    }
+}

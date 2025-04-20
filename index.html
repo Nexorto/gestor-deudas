@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Deudas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-mode">
+    <div class="container">
+        <header>
+            <h1>Gestor de Deudas</h1>
+            <div class="theme-toggle">
+                <i class="fas fa-moon" id="theme-icon"></i>
+            </div>
+        </header>
+
+        <section class="add-debtor">
+            <h2>Agregar Deudor</h2>
+            <div class="input-group">
+                <input type="text" id="debtor-name" placeholder="Nombre del deudor">
+                <input type="number" id="initial-debt" placeholder="Deuda inicial" min="0">
+                <button id="add-debtor-btn"><i class="fas fa-plus"></i> Agregar</button>
+            </div>
+        </section>
+
+        <section class="penalty-config">
+            <h2>Configuración de Penalización</h2>
+            <div class="config-group">
+                <div class="input-group">
+                    <label for="penalty-days">Días antes de penalizar:</label>
+                    <input type="number" id="penalty-days" min="1" value="30">
+                </div>
+                <div class="input-group">
+                    <label for="penalty-amount">Monto de penalización:</label>
+                    <input type="number" id="penalty-amount" min="0" value="100">
+                </div>
+                <button id="save-config-btn"><i class="fas fa-save"></i> Guardar</button>
+            </div>
+        </section>
+
+        <section class="debtors-section">
+            <div class="section-header">
+                <h2>Deudores</h2>
+                <div class="stats">
+                    <div class="stat">
+                        <span>Total:</span>
+                        <span id="total-debt">0</span>
+                    </div>
+                    <div class="stat">
+                        <span>Total histórico:</span>
+                        <span id="total-historic">0</span>
+                    </div>
+                    <div class="stat">
+                        <span>Total penalizaciones:</span>
+                        <span id="total-penalties">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="debtors-list" id="debtors-list">
+                <!-- Debtors will be added here by JS -->
+            </div>
+        </section>
+
+        <section class="data-management">
+            <h2>Gestión de Datos</h2>
+            <div class="buttons-group">
+                <button id="export-btn"><i class="fas fa-file-export"></i> Exportar Completo</button>
+                <button id="export-simple-btn"><i class="fas fa-list"></i> Exportar Simple</button>
+                <div class="import-container">
+                    <button id="import-btn"><i class="fas fa-file-import"></i> Importar</button>
+                    <input type="file" id="import-file" accept=".json" hidden>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal para confirmar eliminación -->
+        <div class="modal" id="delete-modal">
+            <div class="modal-content">
+                <h3>Confirmar Eliminación</h3>
+                <p>¿Estás seguro de que deseas eliminar a <span id="delete-name"></span>?</p>
+                <div class="modal-buttons">
+                    <button id="confirm-delete">Eliminar</button>
+                    <button id="cancel-delete">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para ver historial -->
+        <div class="modal" id="history-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Historial de <span id="history-name"></span></h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="history-content" id="history-content">
+                    <!-- El historial se agregará aquí por JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para agregar movimiento -->
+        <div class="modal" id="movement-modal">
+            <div class="modal-content">
+                <h3>Agregar Movimiento para <span id="movement-name"></span></h3>
+                <div class="input-group">
+                    <input type="number" id="movement-amount" placeholder="Monto (negativo para restar)">
+                    <div class="modal-buttons">
+                        <button id="confirm-movement">Agregar</button>
+                        <button id="cancel-movement">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
