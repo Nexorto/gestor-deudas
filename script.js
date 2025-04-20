@@ -513,10 +513,10 @@ function exportData() {
 
 // Exportar lista simple
 function exportSimpleList() {
-    let simpleList = 'Nombre,Deuda\n';
+    let simpleList = 'Nombre:Deuda\n';
     
     debtors.forEach(debtor => {
-        simpleList += `${debtor.name},${debtor.currentDebt}\n`;
+        simpleList += `${debtor.name}: ${debtor.currentDebt}\n`;
     });
     
     const dataBlob = new Blob([simpleList], { type: 'text/plain' });
@@ -544,12 +544,13 @@ function importData(event) {
             
             // Importar configuración
             if (importedData.config) {
+                importedData.config.id = 'main'; // asignar ID
+            
+                const configTx = db.transaction(['config'], 'readwrite');
+                const configStore = configTx.objectStore('config');
+                configStore.put(importedData.config);
                 config = importedData.config;
-                
-                const transaction = db.transaction(['config'], 'readwrite');
-                const configStore = transaction.objectStore('config');
-                configStore.put(config);
-                
+            
                 document.getElementById('penalty-days').value = config.penaltyDays;
                 document.getElementById('penalty-amount').value = config.penaltyAmount;
             }
@@ -586,7 +587,6 @@ function importData(event) {
     
     reader.readAsText(file);
 }
-
 // Verificar penalizaciones automáticamente cada día
 setInterval(checkPenalties, 24 * 60 * 60 * 1000);
 // También verificar al inicio
