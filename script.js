@@ -171,7 +171,7 @@ function renderDebtors() {
                                  (debtor.startDate || debtor.lastUpdate) : 
                                  today);
         const daysSinceStart = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-        const isPenalized = debtor.penaltyEnabled && debtor.currentDebt > 1 && daysSinceStart >= config.penaltyDays;
+        const isPenalized = debtor.penaltyEnabled && debtor.currentDebt > 500 && daysSinceStart >= config.penaltyDays;
 
         debtorCard.innerHTML = `
             <div class="debtor-header">
